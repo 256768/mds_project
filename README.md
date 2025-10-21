@@ -1,4 +1,4 @@
-# mds_project
+# MDS project
 
 ## Authors
 - 256768
