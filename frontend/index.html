@@ -43,15 +43,17 @@
       <div id="playerCard" class="card p-0 m-2 col-8">
         <div class="card-header">Webcast přehrávač</div>
         <div class="card-body">
-          <video id="hlsPlayer" class="video-js" controls width="640" height="480" poster="preview.jpg">
-            <source src="/hls/stream.m3u8" type="application/x-mpegURL" label="auto" selected="true">
-            <p class="vjs-no-js">Prohlížeč nepodporuje HTML5.</p>
-          </video>
+          <div id="playerContainer">
+            <video id="hlsPlayer" class="video-js" controls width="640" height="480" poster="preview.jpg">
+              <source src="/hls/stream.m3u8" type="application/x-mpegURL" label="auto" selected="true">
+              <p class="vjs-no-js">Prohlížeč nepodporuje HTML5.</p>
+            </video>
+          </div>
 
-          <p id="broadcastStoppedText">Čeká se na zahájení vysílání</p>
+          <p id="broadcastStoppedText">"Vyčkejte na zahájení vysílání" zde hrat klip s textem: https://www.youtube.com/watch?v=Z159OMu1tOk</p>
         </div>
       </div>
-      <div class="card p-0 m-2 col-auto flex-fill">
+      <div id="infoCard" class="card p-0 m-2 col-auto flex-fill">
         <div class="card-header">Informace o přednášejících</div>
         <div class="card-body">
           <table class="table table-striped">
@@ -88,7 +90,7 @@
       <div class="card-header">O přehrávači</div>
       <div class="card-body">
         <p>Testovací buttonky zde</p>
-        <button onclick="javascript:webcastEnd()" class="btn btn-danger">Webcast ještě nezačal</button>
+        <button onclick="javascript:webcastWait()" class="btn btn-danger">Webcast ještě nezačal</button>
         <button onclick="javascript:webcastBegin()" class="btn btn-success">Webcast už začal</button>
       </div>
     </div>
