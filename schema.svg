@@ -34,15 +34,15 @@
      inkscape:snap-nodes="false"
      inkscape:bbox-paths="false"
      inkscape:snap-bbox-edge-midpoints="true"
-     inkscape:zoom="0.80760913"
-     inkscape:cx="474.85843"
-     inkscape:cy="142.39562"
+     inkscape:zoom="1.1421318"
+     inkscape:cx="393.56229"
+     inkscape:cy="136.58669"
      inkscape:window-width="1920"
      inkscape:window-height="959"
      inkscape:window-x="1280"
      inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      inkscape:bbox-nodes="true">
     <inkscape:grid
        type="xygrid"
@@ -124,15 +124,37 @@
        y="15.474968" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="16.362429"
-       y="10.891653"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="35.853622"
+       y="9.9625492"
        id="text6926"><tspan
          sodipodi:role="line"
-         style="font-size:7.05556px;stroke-width:0.264583"
-         x="16.362429"
-         y="10.891653"
-         id="tspan39690">PUBLIKUJÍCÍ               SERVER                 SLEDUJÍCÍ</tspan></text>
+         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="35.853622"
+         y="9.9625492"
+         id="tspan39690">PUBLIKUJÍCÍ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="104.86909"
+       y="9.9659939"
+       id="text6926-3"><tspan
+         sodipodi:role="line"
+         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="104.86909"
+         y="9.9659939"
+         id="tspan39690-6">SERVER</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="174.25192"
+       y="9.9625492"
+       id="text6926-7"><tspan
+         sodipodi:role="line"
+         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="174.25192"
+         y="9.9625492"
+         id="tspan39690-5">SLEDUJÍCÍ</tspan></text>
     <rect
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.439755;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect33-6"
@@ -149,26 +171,26 @@
        y="15.474968" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="95.016113"
-       y="51.946476"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="104.79502"
+       y="51.94648"
        id="text47654"><tspan
          sodipodi:role="line"
          id="tspan47652"
-         style="font-size:7.05556px;stroke-width:0.264583"
-         x="95.016113"
-         y="51.946476">nginx</tspan></text>
+         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="104.79502"
+         y="51.94648">nginx</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="95.253815"
-       y="32.71413"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.55;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="104.77435"
+       y="32.6362"
        id="text52204"><tspan
          sodipodi:role="line"
          id="tspan52202"
-         style="font-size:7.05556px;stroke-width:0.264583"
-         x="95.253815"
-         y="32.71413">RTMP</tspan></text>
+         style="font-size:7.05556px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="104.77435"
+         y="32.6362">RTMP</tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.592;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect57456"
@@ -238,14 +260,14 @@
        id="path96305" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="126.91665"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="132.40262"
        y="48.672897"
        id="text7457"><tspan
          sodipodi:role="line"
          id="tspan7455"
-         style="font-size:5.64444px;stroke-width:0.264583"
-         x="126.91665"
+         style="font-size:5.64444px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="132.40262"
          y="48.672897">HLS</tspan></text>
     <text
        xml:space="preserve"
@@ -302,36 +324,36 @@
        y="65.655052" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="27.909918"
+       style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="36.134567"
        y="70.185677"
        id="text32760"><tspan
          sodipodi:role="line"
          id="tspan32758"
-         style="font-size:4.93889px;stroke-width:0.264583"
-         x="27.909918"
+         style="font-size:4.93889px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="36.134567"
          y="70.185677">Vysílat</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="35.608391"
+       x="35.608398"
        y="61.603977"
        id="text42492"><tspan
          sodipodi:role="line"
          id="tspan42490"
          style="font-size:2.82222px;stroke-width:0.264583"
-         x="35.608391"
+         x="35.608398"
          y="61.603977">Vysílající3</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="66.325294"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="77.763008"
        y="48.668491"
        id="text48834"><tspan
          sodipodi:role="line"
          id="tspan48832"
-         style="font-size:5.64444px;stroke-width:0.264583"
-         x="66.325294"
+         style="font-size:5.64444px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="77.763008"
          y="48.668491">WebRTC</tspan></text>
     <ellipse
        style="opacity:1;fill:none;fill-opacity:0.99706;stroke:#000000;stroke-width:0.328999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -393,5 +415,16 @@
        style="fill:none;fill-opacity:0.99562;stroke:#000000;stroke-width:0.178093;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 184.34805,62.873403 c -0.93314,0.02589 -1.66312,-0.33424 -2.096,-0.651104 -0.11188,0.08816 0.0345,0.03357 -0.32151,0.227449 -0.71218,0.387748 -1.35453,0.94894 -1.89543,1.643032 -1.0818,1.388185 -1.75785,3.307973 -1.7754,5.435022 h 11.97192 c -0.0176,-2.127376 -0.6938,-4.047395 -1.77586,-5.435613 -0.54104,-0.69411 -1.18353,-1.255268 -1.89585,-1.642923 -0.35617,-0.193826 -0.13158,-0.05803 -0.2522,-0.148228 -0.41779,0.256494 -0.97392,0.545017 -1.95967,0.572365 z"
        sodipodi:nodetypes="scssccsscs" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.175px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="66.407539"
+       y="53.790958"
+       id="text73028"><tspan
+         sodipodi:role="line"
+         id="tspan73026"
+         style="font-size:3.175px;stroke-width:0.264583"
+         x="66.407539"
+         y="53.790958">až 6 současně</tspan></text>
   </g>
 </svg>
