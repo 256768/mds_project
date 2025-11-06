@@ -3,8 +3,8 @@
 
 <svg
    width="210mm"
-   height="100mm"
-   viewBox="0 0 210 100"
+   height="90mm"
+   viewBox="0 0 210 90"
    version="1.1"
    id="svg5"
    sodipodi:docname="schema.svg"
@@ -35,15 +35,16 @@
      inkscape:bbox-paths="false"
      inkscape:snap-bbox-edge-midpoints="true"
      inkscape:zoom="1.1421318"
-     inkscape:cx="393.56229"
-     inkscape:cy="136.58669"
+     inkscape:cx="333.58672"
+     inkscape:cy="205.75559"
      inkscape:window-width="1920"
      inkscape:window-height="959"
      inkscape:window-x="1280"
      inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
-     inkscape:bbox-nodes="true">
+     inkscape:current-layer="layer2"
+     inkscape:bbox-nodes="true"
+     height="99mm">
     <inkscape:grid
        type="xygrid"
        id="grid9" />
@@ -51,31 +52,31 @@
   <defs
      id="defs2">
     <marker
-       style="overflow:visible;"
+       style="overflow:visible"
        id="marker1113"
-       refX="0.0"
-       refY="0.0"
+       refX="0"
+       refY="0"
        orient="auto"
        inkscape:stockid="Arrow2Lend"
        inkscape:isstock="true">
       <path
-         transform="scale(1.1) rotate(180) translate(1,0)"
-         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
-         style="stroke:context-stroke;fill-rule:evenodd;fill:context-stroke;stroke-width:0.62500000;stroke-linejoin:round;"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
          id="path873" />
     </marker>
     <marker
-       style="overflow:visible;"
+       style="overflow:visible"
        id="Arrow2Lend"
-       refX="0.0"
-       refY="0.0"
+       refX="0"
+       refY="0"
        orient="auto"
        inkscape:stockid="Arrow2Lend"
        inkscape:isstock="true">
       <path
-         transform="scale(1.1) rotate(180) translate(1,0)"
-         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
-         style="stroke:context-stroke;fill-rule:evenodd;fill:context-stroke;stroke-width:0.62500000;stroke-linejoin:round;"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
          id="path96408" />
     </marker>
     <symbol
@@ -103,10 +104,10 @@
      id="layer2"
      inkscape:label="Background">
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.3124"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.296575"
        id="rect1017"
        width="209.68761"
-       height="99.687599"
+       height="89.843803"
        x="0.15620005"
        y="0.15620005" />
   </g>
