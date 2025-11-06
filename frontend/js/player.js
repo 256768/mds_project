@@ -1,6 +1,7 @@
 const playerElement = document.getElementById('hlsPlayer');
 const playerContainerElement = document.getElementById('playerContainer');
 const stoppedTextElement = document.getElementById('broadcastStoppedText');
+const infoElement = document.getElementById('broadcastInfo');
 const playerCardElement = document.getElementById('playerCard');
 const infoCardElement = document.getElementById('infoCard');
 
@@ -22,7 +23,7 @@ function webcastBegin(){
 
   player.controls(true);
   player.muted(false);
-  broadcastInfo.style.display = 'block';
+  infoElement.style.display = 'block';
   stoppedTextElement.style.display = 'none';
 }
 
@@ -34,7 +35,7 @@ function webcastWait(){
 
   player.controls(false);
   player.muted(true);
-  broadcastInfo.style.display = 'none';
+  infoElement.style.display = 'none';
   stoppedTextElement.style.display = 'block';
 }
 
