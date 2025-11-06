@@ -39,24 +39,22 @@
   <!-- content -->
   <div class="container mt-2">
     <!-- player and info sidebyside -->
-    <div class="row">
-      <div id="playerCard" class="card p-0 m-2 col-8">
+    <div class="row gap-2 m-0">
+      <div id="playerCard" class="card p-0 col-auto flex-fill">
         <div class="card-header">Webcast přehrávač</div>
         <div class="card-body">
           <div id="playerContainer">
-            <video id="hlsPlayer" class="video-js" controls width="640" height="480" poster="preview.jpg">
-              <source src="/hls/stream.m3u8" type="application/x-mpegURL" label="auto" selected="true">
+            <video id="hlsPlayer" class="video-js"  width="640" height="360" poster="assets/loading.jpg">
               <p class="vjs-no-js">Prohlížeč nepodporuje HTML5.</p>
             </video>
           </div>
-
-          <p id="broadcastStoppedText">"Vyčkejte na zahájení vysílání" zde hrat klip s textem: https://www.youtube.com/watch?v=Z159OMu1tOk</p>
         </div>
       </div>
-      <div id="infoCard" class="card p-0 m-2 col-auto flex-fill">
-        <div class="card-header">Informace o přednášejících</div>
+      <div id="infoCard" class="card p-0 col-xs-12 col-md-4">
+        <div class="card-header">Informace o vysílání</div>
         <div class="card-body">
-          <table class="table table-striped">
+          <p id="broadcastStoppedText">Vyčkejte na zahájení vysílání</p>
+          <table id="broadcastInfo" class="table table-striped">
             <thead>
               <tr>
                 <th>Přednášející</th>
@@ -86,12 +84,13 @@
       </div>
     </div>
     <!-- about -->
-    <div class="card m-2">
+    <div class="card mt-2">
       <div class="card-header">O přehrávači</div>
       <div class="card-body">
         <p>Testovací buttonky zde</p>
         <button onclick="javascript:webcastWait()" class="btn btn-danger">Webcast ještě nezačal</button>
         <button onclick="javascript:webcastBegin()" class="btn btn-success">Webcast už začal</button>
+        <!--button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button-->
       </div>
     </div>
   </div>
