@@ -17,16 +17,20 @@ To be added soon.
 
 ### Ubuntu
 
-1. Download nginx and RTMP plugin
+1. Install nginx, RTMP plugin and openssl
     ```bash
-    sudo apt install nginx libnginx-mod-rtmp
+    sudo apt install nginx libnginx-mod-rtmp openssl
     ```
 2. Free up port 80 by stopping and disabling nginx service
     ```bash
     sudo systemctl stop nginx
     sudo systemctl disable nginx
     ```
-3. Run project in nginx (working directory is base of the repository)
+3. Generate server certificate and key
+    ```bash
+    openssl req -x509 -newkey rsa:4096 -keyout conf/ssl/key.pem -out conf/ssl/cert.pem -sha256 -days 365 -nodes -subj "/C=CZ/ST=CZ/L=Brno/O=VUTFEKT/OU=BPCMDS/CN=webcast.example.com"
+    ```
+4. Run project in nginx (working directory is base of the repository)
     ```bash
     sudo nginx -p . -c conf/nginx.conf -g "load_module '/usr/lib/nginx/modules/ngx_rtmp_module.so';"
     ```
