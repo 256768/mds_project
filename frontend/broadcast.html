@@ -57,7 +57,7 @@
         <div class="card-header">Náhled webové kamery</div>
         <div class="card-body">
           <div id="playerContainer">
-            <video id="hlsPlayer" class="video-js"  width="640" height="360" poster="assets/loading.jpg">
+            <video id="webcamPreview" class="video-js"  width="640" height="360" poster="assets/loading.jpg">
               <p class="vjs-no-js">Prohlížeč nepodporuje HTML5.</p>
             </video>
           </div>
@@ -66,15 +66,26 @@
       <div class="card p-0 col-xs-12 col-md-4">
         <div class="card-header">Nastavení vysílání</div>
         <div class="card-body">
-          <form class="d-flex">
-            <input id="broadcasterName" class="form-control me-2" type="text" placeholder="Jméno přednášejícího">
-            <button onclick="javascript:setName()" class="btn btn-primary" type="button">Nastavit</button>
-          </form>
-          <form class="d-flex mt-2">
-            <p id="microphoneState" class="m-2">Mikrofon je zapnutý</p>
-            <button id="unmuteButton" onclick="javascript:unmuteMicrophone()" class="btn btn-success" type="button">Zapnout mikrofon</button>
-            <button id="muteButton" onclick="javascript:muteMicrophone()" class="btn btn-danger" type="button">Ztlumit mikrofon</button>
-          </form>
+          <div id="controls">
+            <form class="d-flex">
+              <input id="broadcasterName" class="form-control me-2" type="text" placeholder="Jméno přednášejícího">
+              <button onclick="javascript:setName()" class="btn btn-primary" type="button">Nastavit</button>
+            </form>
+            <form class="d-flex mt-2">
+              <p id="microphoneState" class="m-2">Mikrofon je zapnutý</p>
+              <button id="unmuteButton" onclick="javascript:unmuteMicrophone()" class="btn btn-success" type="button">Zapnout mikrofon</button>
+              <button id="muteButton" onclick="javascript:muteMicrophone()" class="btn btn-danger" type="button" disabled>Ztlumit mikrofon</button>
+            </form>
+            <form class="d-flex mt-2">
+              <p id="streamState" class="m-2">Stream je vypnutý</p>
+              <button id="startButton" onclick="javascript:startStream()" class="btn btn-success" type="button">Spustit vysílání</button>
+              <button id="stopButton" onclick="javascript:stopStream()" class="btn btn-danger" type="button">Zastavit vysílání</button>
+            </form>
+          </div>
+          <div id="errorDialog" style="display:none;">
+            <p>Nepodařilo se načíst kameru nebo mikrofon z důvodu chyby: <i id="errorName">N/a</i></p>
+            <button onclick="javascript:getWebcamAndMicrophone()" class="btn btn-success" type="button">Pokusit se znovu načíst kameru a mikrofon</button>
+          </div>
         </div>
       </div>
     </div>
@@ -85,7 +96,6 @@
         <p>Testovací buttonky zde</p>
         <button onclick="javascript:login()" class="btn btn-success">Příhlášeno</button>
         <button onclick="javascript:logout()" class="btn btn-danger">Odhlášeno</button>
-        <button onclick="javascript:testWebcam()" class="btn btn-primary">Náhled</button>
       </div>
     </div>
   </div>
