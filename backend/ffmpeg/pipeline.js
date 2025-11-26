@@ -28,5 +28,5 @@ export const ffmpegArgs = [
     "-master_pl_name", "master.m3u8",
     "-var_stream_map", "v:0,a:0,name:1080p v:1,a:1,name:720p v:2,a:2,name:480p",
 
-    "/home/petr/Dokumenty/5. semestr/mds/mds_project/backend/hls/output/stream_%v.m3u8"
+    "/hls/output/stream_%v.m3u8"
 ];
