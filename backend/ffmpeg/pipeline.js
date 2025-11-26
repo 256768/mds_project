@@ -24,7 +24,7 @@ export const ffmpegArgs = [
     "-f", "hls",
     "-hls_time", "4",
     "-hls_playlist_type", "event",
-    "-hls_segment_filename", "/home/petr/Dokumenty/5. semestr/mds/mds_project/backend/hls/output/seg_%v_%03d.ts",
+    "-hls_segment_filename", "/hls/output/seg_%v_%03d.ts",
     "-master_pl_name", "master.m3u8",
     "-var_stream_map", "v:0,a:0,name:1080p v:1,a:1,name:720p v:2,a:2,name:480p",
 
