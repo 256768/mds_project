@@ -18,7 +18,7 @@ player.play();
 function webcastBegin(){
   player.src({
     type: "application/x-mpegURL",
-    src: "/hls/stream.m3u8"
+    src: "http://localhost:3001/hls/master.m3u8"
   });
 
   player.controls(true);
