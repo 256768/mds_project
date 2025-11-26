@@ -1,0 +1,6 @@
+# nginx logs
+logs/*
+# rtmp plugin cache
+temp/*
+# ssl certificates
+conf/ssl/*
