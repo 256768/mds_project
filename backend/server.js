@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 // api route pro auth
-app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 
 // http server pro api a websocket
 const server = http.createServer(app);
@@ -30,5 +30,5 @@ console.log("HLS output directory (for WebSocket):", hlsOutputDir);
 startWebsocketServer(server, hlsOutputDir);
 
 // spuštění serveru
-const PORT = 3001;
+const PORT = 3000;
 server.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
