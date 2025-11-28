@@ -1,5 +1,6 @@
 const playerElement = document.getElementById('webcamPreview');
 const loginCardElement = document.getElementById('loginCard');
+const loginFormElement = document.getElementById('loginForm');
 const broadcastGroupElement = document.getElementById('broadcastGroup');
 const broadcasterNameElement = document.getElementById('broadcasterName');
 const microphoneStateElement = document.getElementById('microphoneState');
@@ -14,6 +15,7 @@ const errorNameElement = document.getElementById('errorName');
 
 var ws;
 var mediaRecorder;
+var token = "unauth";
 
 // do elementu playerElement prida funkcionalitu knihovny Video.js
 var options = {
@@ -24,6 +26,32 @@ var options = {
 };
 var player = videojs(playerElement, options);
 player.play();
+
+loginFormElement.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const username = loginFormElement.username.value;
+      const password = loginFormElement.password.value;
+
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+        credentials: 'include'
+      });
+      const data = await res.json();
+
+      if(res.ok){
+        token = data.token;
+        login();
+      }else{
+        alert('Bad username and/or password.');
+        loginFormElement.reset();
+      }
+
+      console.log(data);
+      console.log(res);
+    });
 
 function login(){
     loginCardElement.style.display = 'none';
@@ -63,14 +91,14 @@ function unmuteMicrophone(){
 }
 
 function startStream(){
-    window.ws = new WebSocket('ws://localhost:3000/broadcast?name=' + broadcasterNameElement.value);
+    window.ws = new WebSocket('ws://localhost:3000/broadcast?name=' + broadcasterNameElement.value + "&token=" + token);
     window.ws.binaryType = 'arraybuffer';
     window.ws.onopen = () => {
         window.mediaRecorder = new MediaRecorder(playerElement.captureStream(30), { mimeType: 'video/webm; codecs=vp8' });
         window.mediaRecorder.ondataavailable = e => {
-        if (e.data.size > 0 && window.ws.readyState === WebSocket.OPEN) {
-            window.ws.send(e.data);
-        }
+            if (e.data.size > 0 && window.ws.readyState === WebSocket.OPEN) {
+                window.ws.send(e.data);
+            }
         };
         window.mediaRecorder.start(200); //send 200ms chunks
 

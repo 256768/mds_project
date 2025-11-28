@@ -9,13 +9,14 @@ export function startWebsocketServer(server, hlsOutputDir) {
     fs.mkdirSync(hlsOutputDir, { recursive: true });
   }
 
-  const wss = new WebSocketServer({ server, path: "/ws/stream" });
+  const wss = new WebSocketServer({ server, path: "/broadcast" });
 
   wss.on("connection", (ws, req) => {
     console.log("📡 Připojen nový WS klient:", req.socket.remoteAddress);
 
     const token = new URL(req.url, "http://localhost").searchParams.get("token");
     const user = verifyToken(token);
+    const name = new URL(req.url, `http://${req.headers.host}`).searchParams.get("name"); // to be displayed in six-view
 
     if (!user || user.role !== "broadcaster") {
       console.log("❌ Neoprávněný uživatel, zavírám WS");
@@ -28,9 +29,20 @@ export function startWebsocketServer(server, hlsOutputDir) {
     
 
 const ffmpegArgs = [
+  // input
   "-i", "pipe:0",
+  "-map", "0:v", "-map", "0:a",
 
-  "-filter_complex",
+  // send 360p, 480p, 720p and source quality to nginx hls (using RTMP)
+  "-c:v","libx264", "-c:a","aac", "-b:v", "256k", "-b:a", "32k", "-vf", "scale='640:360'",
+  "-preset", "veryfast", "-f", "flv", "rtmp://localhost/hls/stream_360",
+  "-c:v","libx264", "-c:a","aac", "-b:v", "384k", "-b:a", "64k", "-vf", "scale='854:480'",
+  "-preset", "veryfast", "-f", "flv", "rtmp://localhost/hls/stream_480",
+  "-c:v","libx264", "-c:a","aac", "-b:v", "1920k", "-b:a", "128k", "-vf", "scale='1280:720'",
+  "-preset", "veryfast", "-f", "flv", "rtmp://localhost/hls/stream_720",
+  "-c:v","libx264", "-c:a","aac", "-f", "flv", "rtmp://localhost:1935/hls/stream_src"
+
+  /*"-filter_complex",
     "[0:v]split=3[v1080][v720][v480];" +
     "[v1080]scale=-2:1080[v1080out];" +
     "[v720]scale=-2:720[v720out];" +
@@ -66,7 +78,7 @@ const ffmpegArgs = [
   "-var_stream_map",
     "v:0,a:0,name:1080p v:1,a:1,name:720p v:2,a:2,name:480p",
 
-  path.join(hlsOutputDir,"stream_%v.m3u8")
+  path.join(hlsOutputDir,"stream_%v.m3u8")*/
 ];
 
 
