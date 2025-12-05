@@ -30,13 +30,12 @@ player.play();
 loginFormElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const username = loginFormElement.username.value;
       const password = loginFormElement.password.value;
 
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ password }),
         credentials: 'include'
       });
       const data = await res.json();
@@ -45,7 +44,7 @@ loginFormElement.addEventListener('submit', async (e) => {
         token = data.token;
         login();
       }else{
-        alert('Bad username and/or password.');
+        alert('Špatné heslo');
         loginFormElement.reset();
       }
 
