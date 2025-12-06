@@ -7,10 +7,12 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.21.2",
+    "fast-equals": "^5.3.3",
+    "fast-xml-parser": "^5.3.2",
     "jsonwebtoken": "^9.0.2",
-    "ws": "^8.14.1",
-    "cors": "^2.8.5"
+    "ws": "^8.14.1"
   }
 }
