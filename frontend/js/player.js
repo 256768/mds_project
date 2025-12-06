@@ -13,6 +13,11 @@ var options = {
     autoplay: true
 };
 var player = videojs(playerElement, options);
+
+player.hlsQualitySelector({
+    displayCurrentQuality: true,
+});
+
 player.play();
 
 function webcastBegin(){
