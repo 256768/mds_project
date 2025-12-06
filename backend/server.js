@@ -6,6 +6,7 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
+import { transcode } from "./transcode.js";
 
 dotenv.config();
 
@@ -28,6 +29,9 @@ console.log("HLS output directory (for WebSocket):", hlsOutputDir);
 
 // websocket server
 startWebsocketServer(server, hlsOutputDir);
+
+// start transkódování s periodickou kontrolou
+setInterval(transcode, 5000);
 
 // spuštění serveru
 const PORT = 3000;
