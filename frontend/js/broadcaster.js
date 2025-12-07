@@ -13,7 +13,7 @@ const controlsElement = document.getElementById('controls');
 const errorDialogElement = document.getElementById('errorDialog');
 const errorNameElement = document.getElementById('errorName');
 
-//source stackoverflow
+// cookies
 function setCookie(name,value,days) {
     var expires = "";
     if (days) {
@@ -40,10 +40,11 @@ function eraseCookie(name) {
 var ws;
 var mediaRecorder;
 var token = getCookie("token");
+var currentStream; // uložíme si stream z getUserMedia
 
-// do elementu playerElement prida funkcionalitu knihovny Video.js
+// video.js player
 var options = {
-    fluid: true, //meni se velikost dle okna
+    fluid: true,
     loop: true,
     muted: true,
     autoplay: true
@@ -51,31 +52,28 @@ var options = {
 var player = videojs(playerElement, options);
 player.play();
 
+// login
 loginFormElement.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    e.preventDefault();
+    const password = loginFormElement.password.value;
 
-      const password = loginFormElement.password.value;
-
-      const res = await fetch('/api/auth/login', {
+    const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
         credentials: 'include'
-      });
-      const data = await res.json();
+    });
+    const data = await res.json();
 
-      if(res.ok){
+    if(res.ok){
         token = data.token;
         setCookie("token", token, 1);
         login();
-      }else{
+    }else{
         alert('Špatné heslo');
         loginFormElement.reset();
-      }
-
-      console.log(data);
-      console.log(res);
-    });
+    }
+});
 
 function login(){
     loginCardElement.style.display = 'none';
@@ -90,7 +88,6 @@ function logout(){
 }
 
 function setName(){
-    //if stream started restart it
     if(streamStateElement.innerHTML == "Vysílání je spuštěné"){
         stopStream();
         startStream();
@@ -98,22 +95,22 @@ function setName(){
 }
 
 function muteMicrophone(){
-    microphoneStateElement.innerHTML = "Mikrofon je ztlumený"
+    microphoneStateElement.innerHTML = "Mikrofon je ztlumený";
     unmuteButtonElement.style.removeProperty('display');
     muteButtonElement.style.display = 'none';
 
-    if(typeof window.mediaRecorder !== 'undefined'){
-        window.mediaRecorder.stream.getAudioTracks().forEach(function(track){track.enabled = false;});
+    if(currentStream){
+        currentStream.getAudioTracks().forEach(track => track.enabled = false);
     }
 }
 
 function unmuteMicrophone(){
-    microphoneStateElement.innerHTML = "Mikrofon je zapnutý"
+    microphoneStateElement.innerHTML = "Mikrofon je zapnutý";
     unmuteButtonElement.style.display = 'none';
     muteButtonElement.style.removeProperty('display');
 
-    if(typeof window.mediaRecorder !== 'undefined'){
-        window.mediaRecorder.stream.getAudioTracks().forEach(function(track){track.enabled = false;});
+    if(currentStream){
+        currentStream.getAudioTracks().forEach(track => track.enabled = true);
     }
 }
 
@@ -125,15 +122,20 @@ function startStream(){
     window.ws = new WebSocket('ws://localhost:3000/broadcast?name=' + broadcasterNameElement.value + "&token=" + token);
     window.ws.binaryType = 'arraybuffer';
     window.ws.onopen = () => {
-        window.mediaRecorder = new MediaRecorder(playerElement.captureStream(30), { mimeType: 'video/webm; codecs=vp8' });
+        // MIME typ fallback
+        let options = { mimeType: 'video/webm;codecs=vp8,opus' };
+        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+            options = { mimeType: 'video/webm' };
+        }
+
+        window.mediaRecorder = new MediaRecorder(currentStream, options);
         window.mediaRecorder.ondataavailable = e => {
             if (e.data.size > 0 && window.ws.readyState === WebSocket.OPEN) {
                 window.ws.send(e.data);
             }
         };
-        window.mediaRecorder.start(200); //send 200ms chunks
+        window.mediaRecorder.start(200);
 
-        //ui gets updated only if connection successful
         muteButtonElement.disabled = false;
         streamStateElement.innerHTML = "Vysílání je spuštěné";
         startButtonElement.style.display = 'none';
@@ -146,23 +148,22 @@ function startStream(){
 }
 
 function stopStream(){
-    streamStateElement.innerHTML = "Vysílání je zastavené"
+    streamStateElement.innerHTML = "Vysílání je zastavené";
     startButtonElement.style.removeProperty('display');
     stopButtonElement.style.display = 'none';
 
-    if(typeof window.mediaRecorder !== 'undefined'){
+    if(window.mediaRecorder){
         window.mediaRecorder.stop();
     }
-    if(typeof window.ws !== 'undefined'){
+    if(window.ws){
         window.ws.close();
     }
 }
 
 function getWebcamAndMicrophone(){
-    // set webcam to preview
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(function(stream) {
+        currentStream = stream;
         player.tech().el().srcObject = stream;
-        console.log(stream);
         player.tech().el().play();
         console.log("Webkamera je v náhledu");
     })
@@ -173,15 +174,16 @@ function getWebcamAndMicrophone(){
 }
 
 function showError(e){
+    let error;
     switch(e.name){
         case "NotFoundError":
-            var error = "webkamera a mikrofon nebyly nalezeny";
+            error = "webkamera a mikrofon nebyly nalezeny";
             break;
         case "NotAllowedError":
-            var error = "nebyl umožněn přístup ke kameře a mikrofonu";
+            error = "nebyl umožněn přístup ke kameře a mikrofonu";
             break;
         default:
-            var error = e;
+            error = e;
             break;
     }
     alert("Nastala chyba: "+error);
@@ -190,6 +192,7 @@ function showError(e){
     controlsElement.style.display = 'none';
 }
 
+// init
 if(getCookie("token") != null){
     login();
 }else{
