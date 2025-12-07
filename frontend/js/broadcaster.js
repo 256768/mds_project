@@ -13,9 +13,33 @@ const controlsElement = document.getElementById('controls');
 const errorDialogElement = document.getElementById('errorDialog');
 const errorNameElement = document.getElementById('errorName');
 
+//source stackoverflow
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
 var ws;
 var mediaRecorder;
-var token = "unauth";
+var token = getCookie("token");
 
 // do elementu playerElement prida funkcionalitu knihovny Video.js
 var options = {
@@ -42,6 +66,7 @@ loginFormElement.addEventListener('submit', async (e) => {
 
       if(res.ok){
         token = data.token;
+        setCookie("token", token, 1);
         login();
       }else{
         alert('Špatné heslo');
@@ -61,12 +86,15 @@ function login(){
 function logout(){
     loginCardElement.style.removeProperty('display');
     broadcastGroupElement.style.display = 'none';
+    eraseCookie("token");
 }
 
 function setName(){
-    //restart stream with different name+
-    stopStream();
-    startStream();
+    //if stream started restart it
+    if(streamStateElement.innerHTML == "Vysílání je spuštěné"){
+        stopStream();
+        startStream();
+    }
 }
 
 function muteMicrophone(){
@@ -90,6 +118,10 @@ function unmuteMicrophone(){
 }
 
 function startStream(){
+    if(broadcasterNameElement.value == ""){
+        alert("Je třeba nastavit jméno");
+        return;
+    }
     window.ws = new WebSocket('ws://localhost:3000/broadcast?name=' + broadcasterNameElement.value + "&token=" + token);
     window.ws.binaryType = 'arraybuffer';
     window.ws.onopen = () => {
@@ -103,7 +135,7 @@ function startStream(){
 
         //ui gets updated only if connection successful
         muteButtonElement.disabled = false;
-        streamStateElement.innerHTML = "Vysílání je spuštěné"
+        streamStateElement.innerHTML = "Vysílání je spuštěné";
         startButtonElement.style.display = 'none';
         stopButtonElement.style.removeProperty('display');
     };
@@ -158,6 +190,11 @@ function showError(e){
     controlsElement.style.display = 'none';
 }
 
-logout();
+if(getCookie("token") != null){
+    login();
+}else{
+    logout();
+}
+
 unmuteMicrophone();
 stopStream();
