@@ -12,29 +12,32 @@ var options = {
     loop: true,
     muted: true,
     autoplay: true,
-    controls: true
-        /*controlBar: {
-            playToggle: true,
-            volumePanel: false,
-            pictureInPictureToggle: false,
-            progressControl: {
-              seekBar: true,
-            },
-            currentTimeDisplay: true,
-            timeDivider: true,
-            durationDisplay: true,
-            remainingTimeDisplay: true,
-            playbackRateMenuButton: false,
-          },
-          preload: "auto",
-          aspectRatio: "16:9",
-          responsive: true,
-          liveui: true*/
+    controls: true,
+    /*controlBar: {
+      playToggle: true,
+      volumePanel: true,
+      pictureInPictureToggle: true,
+      progressControl: {
+        seekBar: true,
+      },
+      currentTimeDisplay: true,
+      timeDivider: true,
+      durationDisplay: true,
+      remainingTimeDisplay: true,
+      playbackRateMenuButton: false,
+      qualitySelector: true,
+      sourceSelector: true
+    },*/
+    preload: "auto",
+    aspectRatio: "16:9",
+    responsive: true,
+    liveui: true
 };
+
 var player = videojs(playerElement, options);
 
-player.hlsQualitySelector({
-    displayCurrentQuality: true,
+player.ready(function () {
+  player.qualitySelectorHls({displayCurrentQuality: true});
 });
 
 player.play();
