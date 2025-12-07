@@ -32,7 +32,7 @@ export function startWebsocketServer(server, hlsOutputDir) {
     console.log("✅ Broadcaster připojen:", user);
 
     const ffmpegArgs = [
-      "-f", "matroska,webm", "-i", "pipe:0",
+      "-i", "pipe:0",
       "-preset", "veryfast",
       "-c:v", "libx264", "-c:a", "aac", "-r", "30",
       "-vf", "drawtext=fontfile=arial.ttf:text='"+name+"':fontcolor=white:fontsize=72:box=1:boxcolor=black@0.5:boxborderw=5:x=20:y=20, scale=1280:720",
