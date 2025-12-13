@@ -31,8 +31,7 @@ function broadcasterRtmpUrls(stats) {
   let urls = [];
 
   streamsArray.forEach(stream => {
-    //not working
-    if(stream.active != undefined){
+    if("active" in stream){
       urls.push(`rtmp://localhost/broadcasters/${stream.name}`);
     }
   });
@@ -53,14 +52,16 @@ function transcodeBroadcasts(stats){
     if(deepEqual(previousUrls, urls)) return;
     previousUrls = urls;
 
-    if(deepEqual(urls, [])) return;
-    
-    console.log(urls);
-
     // stop FFmpeg if running already
     if(ffmpeg != undefined){
       ffmpeg.stdin.end();
+      ffmpeg.stdin.pause();
+      ffmpeg.kill();
     }
+
+    if(deepEqual(urls, [])) return;
+    
+    console.log(urls);
 
     //dynamically add inputs
     var inputCounter = 0;
