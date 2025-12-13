@@ -104,7 +104,7 @@ function transcodeBroadcasts(stats){
       complexFilter = "split=3[v1][v2][v3];[v1]scale=640:360[360p];[v2]scale=854:480[480p];[v3]scale=1280:720[720p];asplit=3[a360p][a480p][a720p]";
     }else{
       complexFilter = "xstack=inputs="+inputCounter+":layout="+layout
-          +":fill=black:shortest=1[v];[v]scale=640:360[360p];[v]scale=854:480[480p];[v]scale=1280:720[720p];amix=inputs="
+          +":fill=black:shortest=1[vgrid];[vgrid]split=3[v1][v2][v3];[v1]scale=640:360[360p];[v2]scale=854:480[480p];[v3]scale=1280:720[720p];amix=inputs="
           +inputCounter+"[a];[a]asplit=3[a360p][a480p][a720p]";
     }
 
@@ -121,7 +121,7 @@ function transcodeBroadcasts(stats){
       "-preset", "veryfast", "-f", "flv", "rtmp://localhost:1935/hls/stream_720"
     );
 
-    ffmpeg = spawn("ffmpeg", ffmpegArgs, {stdio: ["pipe", "pipe", "pipe", "pipe", "pipe", "pipe", "pipe", "pipe", "pipe"]});
+    ffmpeg = spawn("ffmpeg", ffmpegArgs);
 
     ffmpeg.stderr.on("data", d => console.log("Transkódovací FFmpeg:", d.toString()));
     ffmpeg.on("close", () => console.log("Transkódování ukončeno"));
