@@ -4,14 +4,9 @@ import authRoutes from "./auth/routes.js";
 import { startWebsocketServer } from "./websocket.js";
 import express from "express";
 import cors from "cors";
-import path from "path";
-import { fileURLToPath } from "url";
 import { transcode } from "./transcode.js";
 
 dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -23,12 +18,8 @@ app.use("/auth", authRoutes);
 // http server pro api a websocket
 const server = http.createServer(app);
 
-// cesta k hls pro websocket (hls serviruje nginx)
-const hlsOutputDir = path.join(__dirname, "hls", "output");
-console.log("HLS output directory (for WebSocket):", hlsOutputDir);
-
 // websocket server
-startWebsocketServer(server, hlsOutputDir);
+startWebsocketServer(server);
 
 // start transkódování s periodickou kontrolou
 setInterval(transcode, 5000);

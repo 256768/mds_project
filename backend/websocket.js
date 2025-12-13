@@ -1,13 +1,8 @@
 import { WebSocketServer } from "ws";
 import { spawn } from "child_process";
-import fs from "fs";
 import { verifyToken } from "./auth/verify.js";
 
-export function startWebsocketServer(server, hlsOutputDir) {
-  if (!fs.existsSync(hlsOutputDir)) {
-    fs.mkdirSync(hlsOutputDir, { recursive: true });
-  }
-
+export function startWebsocketServer(server) {
   const wss = new WebSocketServer({ server, path: "/broadcast" });
 
   wss.on("connection", (ws, req) => {
