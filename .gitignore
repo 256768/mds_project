@@ -1,0 +1,9 @@
+# nginx logs
+logs/*
+# rtmp plugin cache
+temp/*
+# ssl certificates
+conf/ssl/*
+
+# ignore node_packages
+backend/node_modules/*
