@@ -5,9 +5,9 @@ Tento projekt implementuje multimediální službu pro prezentaci živého obraz
 Frontend je psán v HTML5 a Javascriptu, pro vzhled je využit Bootstrap 5. Serverovou část zajišťuje nginx s doplňkem RTMP a backend Node.js.
 
 ## Autoři
-- Petr Křupka (256768@vutbr.cz)
-- Vojtěch Trunda (247190@vutbr.cz)
-- Vojtěch Brhel (240218@vutbr.cz)
+- 256768@vutbr.cz
+- 247190@vutbr.cz
+- 240218@vutbr.cz
 
 ## Schéma projektu
 ![Schéma projektu](schema.svg)
